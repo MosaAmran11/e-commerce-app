@@ -1,4 +1,3 @@
-//test
 import 'package:e_commerce_app/pages/bottomnav.dart';
 import 'package:e_commerce_app/pages/home.dart';
 import 'package:e_commerce_app/pages/onboarding.dart';
@@ -7,7 +6,6 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
 }
-//amr
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -129,4 +127,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-//aaa
