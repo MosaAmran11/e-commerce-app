@@ -94,7 +94,7 @@ class CategoryTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.asset(
-                image,
+                image,  
                 fit: BoxFit.cover,
               ),
               const Icon(Icons.arrow_forward)
