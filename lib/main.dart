@@ -12,8 +12,9 @@ import 'package:flutter/material.dart';
 
 // void main() {
 //   runApp(const MyApp());
-// }
+// }    
 void main() => runApp(
+
       DevicePreview(
         enabled: !kReleaseMode,
         builder: (context) => MyApp(), // Wrap your app
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return MaterialApp(
-    //   title: 'Flutter Demo',
+    //   title: 'Flutter Demo'..,
     //   debugShowCheckedModeBanner: false,
     //   theme: ThemeData(
     //     colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xfffd6f3e),
