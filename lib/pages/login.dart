@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/pages/signup.dart';
 import 'package:e_commerce_app/widget/support_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -97,12 +98,17 @@ class _LogInState extends State<LogIn> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                 Text("Don't have an account? ",style: AppWidget.lightTextFieldStyle(),),
-                  Text(
-                    "Sign Up",
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                  GestureDetector(
+                    onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=> Signup()));
+                    },
+                    child: Text(
+                      "Sign Up",
+                      style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
               ],),
             ],
