@@ -3,7 +3,6 @@ import 'package:e_commerce_app/pages/ProductDetail.dart';
 import 'package:e_commerce_app/pages/bottomnav.dart';
 import 'package:e_commerce_app/pages/home.dart';
 import 'package:e_commerce_app/pages/login.dart';
-import 'package:e_commerce_app/pages/profile.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -39,11 +38,6 @@ class MyApp extends StatelessWidget {
             primary: const Color(0xfffd6f3e)),
         useMaterial3: true,
       ),
-      // routes: {
-      //   '/home': (context) => const Home(),
-      //   '/product_detail': (context) => const ProductDetail(),
-      //   '/profile': (context) => const Profile()
-      // },
       home: const BottomNav(),
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,

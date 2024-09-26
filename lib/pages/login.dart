@@ -1,13 +1,16 @@
+import 'package:e_commerce_app/pages/signup.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class LogIn extends StatefulWidget {
+  const LogIn({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LogIn> createState() => _LogInState();
 }
 
-class _LoginState extends State<Login> {
+class _LogInState extends State<LogIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,3 +51,4 @@ class _LoginState extends State<Login> {
     );
   }
 }
+

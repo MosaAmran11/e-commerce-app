@@ -1,3 +1,8 @@
 {
+<<<<<<< HEAD
   "cSpell.words": ["ARGB"]
 }
+=======
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
+>>>>>>> 7170de64793e3501cf3d7104058536b5c35e5e5e
