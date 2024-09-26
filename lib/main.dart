@@ -4,6 +4,7 @@ import 'package:e_commerce_app/pages/bottomnav.dart';
 import 'package:e_commerce_app/pages/home.dart';
 import 'package:e_commerce_app/pages/login.dart';
 import 'package:e_commerce_app/pages/onboarding.dart';
+import 'package:e_commerce_app/pages/signup.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       darkTheme: ThemeData.dark(),
-        home: LogIn(),
+        home:Signup()
     );
   }
 }
