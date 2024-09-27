@@ -1,4 +1,3 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:e_commerce_app/models/product.dart';
 import 'package:e_commerce_app/pages/profile.dart';
 import 'package:e_commerce_app/models/support_widget.dart';
