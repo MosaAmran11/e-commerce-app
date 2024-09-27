@@ -40,7 +40,10 @@ class _ProductDetailState extends State<ProductDetail> {
                         border: Border.all(),
                         borderRadius: BorderRadius.circular(40),
                       ),
-                      child: const Icon(Icons.arrow_back_ios_new_outlined),
+                      child: const Icon(
+                        Icons.arrow_back_ios_new_outlined,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
@@ -67,8 +70,8 @@ class _ProductDetailState extends State<ProductDetail> {
                             ),
                             Text(
                               '\$${widget.product.price}',
-                              style: const TextStyle(
-                                  color: Color(0xFFfd6f3e),
+                              style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
                                   fontSize: 23.0,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -78,7 +81,7 @@ class _ProductDetailState extends State<ProductDetail> {
                           height: 20.0,
                         ),
                         Text(
-                          "Details",
+                          "Description",
                           style: AppWidget.semiboldTextStyle,
                         ),
                         const SizedBox(
@@ -87,14 +90,15 @@ class _ProductDetailState extends State<ProductDetail> {
                         Text(
                           widget.product.description,
                           softWrap: true,
+                          style: TextStyle(color: Colors.black),
                         ),
                         const SizedBox(
-                          height: 90,
+                          height: 70,
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           decoration: BoxDecoration(
-                              color: const Color(0xffFd6f3e),
+                              color: Theme.of(context).primaryColor,
                               borderRadius: BorderRadius.circular(10)),
                           width: MediaQuery.of(context).size.width,
                           child: const Center(

@@ -11,6 +11,52 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
+  Widget _buildRemoveItem() {
+    return Container(
+      color: Colors.red,
+      child: const Padding(
+        padding: EdgeInsets.only(left: 10.0, right: 10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                ),
+                SizedBox(
+                  width: 4,
+                ),
+                Text(
+                  'Delete',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Text(
+                  'Delete',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  width: 4,
+                ),
+                Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,21 +80,28 @@ class _CartState extends State<Cart> {
                 child: ListView.builder(
                     itemCount: widget.products.length,
                     itemBuilder: (context, index) {
-                      return ListTile(
-                        leading: CircleAvatar(
-                          radius: 25.0,
-                          child: Image.asset(
-                            widget.products.elementAt(index).image,
-                            fit: BoxFit.cover,
+                      return Dismissible(
+                        key: Key(widget.products.elementAt(index).id),
+                        onDismissed: (direction) => setState(() {
+                          widget.products.removeAt(index);
+                        }),
+                        background: _buildRemoveItem(),
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            radius: 25.0,
+                            child: Image.asset(
+                              widget.products.elementAt(index).image,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        title: Text(
-                          widget.products.elementAt(index).title,
-                          style: AppWidget.semiboldTextStyle,
-                        ),
-                        subtitle: Text(
-                          "\$${widget.products.elementAt(index).price}",
-                          style: AppWidget.lightTextStyle,
+                          title: Text(
+                            widget.products.elementAt(index).title,
+                            style: AppWidget.semiboldTextStyle,
+                          ),
+                          subtitle: Text(
+                            "\$${widget.products.elementAt(index).price}",
+                            style: AppWidget.lightTextStyle,
+                          ),
                         ),
                       );
                     }),
