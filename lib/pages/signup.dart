@@ -13,6 +13,7 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff2f2f2),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 40),
@@ -27,82 +28,21 @@ class _SignupState extends State<Signup> {
                 height: 20,
               ),
               Text(
-                "Please enter the details beloew to\n                     continue",
+                "Please enter the details below to\n                     continue",
                 style: AppWidget.lightTextStyle,
               ),
               SizedBox(
                 height: 40,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "Name",
-                    style: AppWidget.semiboldTextStyle,
-                  ),
-                ],
-              ),
+              AppWidget.textField(context, "Name"),
               SizedBox(
                 height: 20,
               ),
-              Container(
-                  padding: EdgeInsets.only(left: 20),
-                  decoration: BoxDecoration(
-                      color: Color(0xfff4f5f9),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none, hintText: "Name"),
-                  )),
+              AppWidget.textField(context, "Email"),
               SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "Email",
-                    style: AppWidget.semiboldTextStyle,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                  padding: EdgeInsets.only(left: 20),
-                  decoration: BoxDecoration(
-                      color: Color(0xfff4f5f9),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none, hintText: "Email"),
-                  )),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "Password",
-                    style: AppWidget.semiboldTextStyle,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                    color: Color(0xfff4f5f9),
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: InputBorder.none, hintText: "Password"),
-                ),
-              ),
+              AppWidget.textField(context, "Password"),
               SizedBox(
                 height: 20,
               ),

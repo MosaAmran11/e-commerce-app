@@ -19,6 +19,9 @@ class _HomeState extends State<Home> {
   ];
 
   final String tempDetail =
+      "This is good product, it have a 1 year warranty , These headphone are too good like you can also listen a person who is speaking slowly .But be aware of shivam he speaks very loudly"
+      "This is good product, it have a 1 year warranty , These headphone are too good like you can also listen a person who is speaking slowly .But be aware of shivam he speaks very loudly"
+      "This is good product, it have a 1 year warranty , These headphone are too good like you can also listen a person who is speaking slowly .But be aware of shivam he speaks very loudly"
       "This is good product, it have a 1 year warranty , These headphone are too good like you can also listen a person who is speaking slowly .But be aware of shivam he speaks very loudly";
 
   @override
@@ -57,6 +60,9 @@ class _HomeState extends State<Home> {
                     style: AppWidget.lightTextStyle,
                   ),
                   bottom: AppWidget.searchBox(context),
+                ),
+                SizedBox(
+                  height: 5.0,
                 ),
                 AppWidget.scrollingView(
                   context,
