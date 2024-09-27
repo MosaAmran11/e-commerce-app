@@ -14,6 +14,7 @@ class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff2f2f2),
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.only(top: 25.0, left: 20.0, right: 20.0),
