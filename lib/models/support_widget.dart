@@ -26,13 +26,21 @@ class AppWidget {
     );
   }
 
-  static Widget textField(BuildContext context, String labelText) {
+  static Widget textField(BuildContext context, String labelText,
+      [TextEditingController? textController]) {
     return Container(
       padding: EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
           color: Theme.of(context).primaryColorLight,
           borderRadius: BorderRadius.circular(10)),
-      child: TextField(
+      child: TextFormField(
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return "Please enter your ${labelText.toLowerCase()}";
+          }
+          return null;
+        },
+        controller: textController,
         style: TextStyle(color: Colors.black),
         decoration: InputDecoration(
           labelText: labelText,

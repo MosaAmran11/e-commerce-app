@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "526772478086",
-    "project_id": "yemenstoree",
-    "storage_bucket": "yemenstoree.appspot.com"
+    "project_number": "1065356600700",
+    "project_id": "e-commerce-app-39ec2",
+    "storage_bucket": "e-commerce-app-39ec2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:526772478086:android:3a3609a59beaccc9583107",
+        "mobilesdk_app_id": "1:1065356600700:android:54008fe2a5fa852f99b0f9",
         "android_client_info": {
           "package_name": "com.example.e_commerce_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAphDuvDaxbd-NcGgCacBh3qziB-JPC2Yg"
+          "current_key": "AIzaSyDTQKAw8W0hRB3OXMAitN4HzBwXJxbXdeI"
         }
       ],
       "services": {
