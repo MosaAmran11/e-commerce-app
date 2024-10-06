@@ -28,7 +28,7 @@ class _SignUpState extends State<SignUp> {
             content: Text(
               "Registered Successfully",
               style: TextStyle(fontSize: 20.0),
-            )));
+            )));        
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -104,7 +104,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    if (_formKey.currentState!.validate()){
+                    if (_formKey.currentState!.validate()) {
                       setState(() {
                         name = nameController.text;
                         email = emailController.text;
