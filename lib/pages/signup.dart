@@ -24,7 +24,7 @@ class _SignUpState extends State<SignUp> {
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email!, password: password!);
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            backgroundColor: Colors.greenAccent,
+            backgroundColor: Colors.green,
             content: Text(
               "Registered Successfully",
               style: TextStyle(fontSize: 20.0),
@@ -39,7 +39,7 @@ class _SignUpState extends State<SignUp> {
               )));
         } else if (e.code == 'email-already-in-use') {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              backgroundColor: Colors.greenAccent,
+              backgroundColor: Colors.redAccent,
               content: Text(
                 "Account  already exists",
                 style: TextStyle(fontSize: 20.0),
@@ -83,7 +83,7 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: 20,
                 ),
-                AppWidget.textField(context, "Password", passwordController),
+                AppWidget.textField(context, "Password", passwordController,),
                 SizedBox(
                   height: 20,
                 ),
