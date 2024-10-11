@@ -103,6 +103,7 @@ class _SignUpState extends State<SignUp> {
                   context,
                   "Password",
                   passwordController,
+                  true
                 ),
                 SizedBox(
                   height: 20,

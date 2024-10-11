@@ -27,13 +27,14 @@ class AppWidget {
   }
 
   static Widget textField(BuildContext context, String labelText,
-      [TextEditingController? textController]) {
+      [TextEditingController? textController, bool obscureText = false]) {
     return Container(
       padding: EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
           color: Theme.of(context).primaryColorLight,
           borderRadius: BorderRadius.circular(10)),
       child: TextFormField(
+        obscureText: obscureText,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return "Please enter your ${labelText.toLowerCase()}";

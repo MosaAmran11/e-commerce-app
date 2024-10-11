@@ -19,7 +19,7 @@ class _AddProductState extends State<AddProduct> {
   final ImagePicker _picker = ImagePicker();
 
   File? selectedImage;
-  TextEditingController namecontroller = new TextEditingController();
+  TextEditingController namecontroller = TextEditingController();
   Future getImage() async {
     var image = await _picker.pickImage(source: ImageSource.gallery);
     selectedImage = File(image!.path);
