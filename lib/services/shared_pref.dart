@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceHelper {
