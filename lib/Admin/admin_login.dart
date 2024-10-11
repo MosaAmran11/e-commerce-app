@@ -12,8 +12,8 @@ class AdminLogin extends StatefulWidget {
 }
 
 class _AdminLoginState extends State<AdminLogin> {
-  TextEditingController usernamecontroller = new TextEditingController();
-  TextEditingController userpasswordcontroller = new TextEditingController();
+  TextEditingController usernamecontroller = TextEditingController();
+  TextEditingController userpasswordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
