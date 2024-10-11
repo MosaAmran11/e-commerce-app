@@ -2,6 +2,7 @@ import 'package:e_commerce_app/pages/bottomnav.dart';
 import 'package:e_commerce_app/pages/login.dart';
 import 'package:e_commerce_app/models/support_widget.dart';
 import 'package:e_commerce_app/services/database.dart';
+import 'package:e_commerce_app/services/shared_pref.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
@@ -36,6 +37,11 @@ class _SignUpState extends State<SignUp> {
           ),
         );
         String Id = randomAlphaNumeric(10);
+        await SharedPreferenceHelper().saveUserEmail(emailController.text);
+        await SharedPreferenceHelper().saveUserId(Id);
+        await SharedPreferenceHelper().saveUserName(nameController.text);
+        await SharedPreferenceHelper().saveUserImage("https://firebasestorage.googleapis.com/v0/b/yemen-storee.appspot.com/o/purple.jpg?alt=media&token=d52215c3-38ed-4107-8164-1191938ba0e1");
+
         Map<String, dynamic> userInfoMap = {
           "Name": nameController.text,
           "Email": emailController.text,
