@@ -51,6 +51,25 @@ class AppWidget {
     );
   }
 
+    static Widget textFieldAdmin(BuildContext context, String labelText,
+      [TextEditingController? textController]) {
+    return Container(
+      padding: EdgeInsets.only(left: 20),
+      decoration: BoxDecoration(
+          color: Theme.of(context).primaryColorLight,
+          borderRadius: BorderRadius.circular(10)),
+      child: TextFormField(
+        controller: textController,
+        style: TextStyle(color: Colors.black),
+        decoration: InputDecoration(
+          labelText: labelText,
+          labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+          border: InputBorder.none,
+        ),
+      ),
+    );
+  }
+
   static Widget sectionBar(
       {required BuildContext context,
       required Widget title,
