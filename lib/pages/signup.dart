@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/pages/bottomnav.dart';
 import 'package:e_commerce_app/pages/login.dart';
 import 'package:e_commerce_app/models/support_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,12 +24,17 @@ class _SignUpState extends State<SignUp> {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email!, password: password!);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
             backgroundColor: Colors.green,
             content: Text(
               "Registered Successfully",
               style: TextStyle(fontSize: 20.0),
-            )));        
+            ),
+          ),
+        );
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => BottomNav()));
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -68,13 +74,6 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: 20,
                 ),
-                Text(
-                  "Please enter the details below to\n                     continue",
-                  style: AppWidget.lightTextStyle,
-                ),
-                SizedBox(
-                  height: 40,
-                ),
                 AppWidget.textField(context, "Name", nameController),
                 SizedBox(
                   height: 20,
@@ -83,7 +82,11 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: 20,
                 ),
-                AppWidget.textField(context, "Password", passwordController,),
+                AppWidget.textField(
+                  context,
+                  "Password",
+                  passwordController,
+                ),
                 SizedBox(
                   height: 20,
                 ),

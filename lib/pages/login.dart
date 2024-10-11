@@ -215,6 +215,10 @@ class _SignupState extends State<Signup> {
 }*/
 
 import 'package:e_commerce_app/models/support_widget.dart';
+import 'package:e_commerce_app/pages/bottomnav.dart';
+import 'package:e_commerce_app/pages/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -227,118 +231,136 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+  String email = "", password = "";
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  userLogin() async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNav()));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.green,
+            content: Text(
+              "No User Found",
+              style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+        );
+      } else if (e.code == "wrong-password") {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.green,
+            content: Text(
+              "Wrong Password",
+              style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 40),
-          child: Column(
-            children: [
-              Image.asset("images/login.png"),
-              Text(
-                "Sign in",
-                style: TextStyle(
-                  fontSize: 30.0, // Adjust the size as needed
-                  fontWeight: FontWeight.bold, // Makes the text bold
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Image.asset("images/login.png"),
+                Text(
+                  "Sign in",
+                  style: TextStyle(
+                    fontSize: 30.0, // Adjust the size as needed
+                    fontWeight: FontWeight.bold, // Makes the text bold
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Align(
-                alignment: Alignment.centerLeft, // Aligns the text to the left
-                child: Text(
-                  "Email",
-                  style: AppWidget.semiboldTextStyle,
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                  padding: EdgeInsets.only(left: 20),
-                  decoration: BoxDecoration(
-                      color: Color(0xfff4f5f9),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none, hintText: "Email"),
-                  )),
-              SizedBox(
-                height: 20,
-              ),
-              Align(
-                alignment: Alignment.centerLeft, // Aligns the text to the left
-                child: Text(
+                AppWidget.textField(context, "Email", emailController),
+                SizedBox(
+                  height: 20,
+                ),
+                AppWidget.textField(
+                  context,
                   "Password",
-                  style: AppWidget.semiboldTextStyle,
+                  passwordController,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                    color: Color(0xfff4f5f9),
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: InputBorder.none, hintText: "Password"),
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Center(
-                child: Container(
-                  width: MediaQuery.of(context).size.width / 2,
-                  padding: EdgeInsets.all(18),
-                  decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(10)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "Forgot Password?",
+                      style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    if (_formKey.currentState!.validate()) {
+                      setState(() {
+                        email = emailController.text;
+                        password = passwordController.text;
+                      });
+                    }
+                    userLogin();
+                  },
                   child: Center(
-                      child: Text("LOGIN",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold))),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Don't have an account? ",
-                      style: AppWidget.lightTextStyle),
-                  Text(
-                    "Sign Up",
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 2,
+                      padding: EdgeInsets.all(18),
+                      decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                          child: Text("LOGIN",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold))),
+                    ),
                   ),
-                ],
-              ),
-            ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Don't have an account? ",
+                        style: AppWidget.lightTextStyle),
+                    Text(
+                      "Sign Up",
+                      style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
