@@ -2,6 +2,7 @@ import 'package:e_commerce_app/models/product.dart';
 import 'package:e_commerce_app/pages/category_products.dart';
 import 'package:e_commerce_app/pages/profile.dart';
 import 'package:e_commerce_app/models/support_widget.dart';
+import 'package:e_commerce_app/services/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -31,11 +32,29 @@ class _HomeState extends State<Home> {
       "This is good product, it have a 1 year warranty , These headphone are too good like you can also listen a person who is speaking slowly .But be aware of shivam he speaks very loudly"
       "This is good product, it have a 1 year warranty , These headphone are too good like you can also listen a person who is speaking slowly .But be aware of shivam he speaks very loudly";
 
+  String? name, image;
+  getShare() async {
+    name = await SharedPreferenceHelper().getUserName();
+    image = await SharedPreferenceHelper().getUserImage();
+    setState(() {});
+  }
+
+  ontheload() async {
+    await getShare();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    ontheload();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color(0xfff2f2f2),
-        body: SafeArea(
+        body:name==null? Center(child: CircularProgressIndicator()): SafeArea(
           child: Container(
             padding: const EdgeInsets.only(top: 25.0, left: 20.0, right: 20.0),
             child: Column(
@@ -50,8 +69,7 @@ class _HomeState extends State<Home> {
                             builder: (context) => const Profile())),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(50),
-                      child: Image.asset(
-                        'images/boy.jpg',
+                      child: Image.network(image!,
                         height: 70,
                         width: 70,
                         fit: BoxFit.cover,
@@ -59,7 +77,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   title: Text(
-                    "Hey, Name",
+                    "Hey, "+name!,
                     style: AppWidget.boldTextStyle,
                   ),
                   subtitle: Text(
@@ -91,8 +109,10 @@ class _HomeState extends State<Home> {
                             itemCount: categories.length,
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) =>
-                                CategoryTile(image: categories[index], name: Categoryname[index],)),
+                            itemBuilder: (context, index) => CategoryTile(
+                                  image: categories[index],
+                                  name: Categoryname[index],
+                                )),
                       ),
                     ),
                     AppWidget.sectionView(
@@ -114,6 +134,7 @@ class _HomeState extends State<Home> {
                                 price: "100",
                                 description: tempDetail,
                                 id: '1'),
+                            detail: '',
                           ),
                           AppWidget.productItem(
                             context: context,
@@ -123,6 +144,7 @@ class _HomeState extends State<Home> {
                                 price: "80",
                                 description: tempDetail,
                                 id: '2'),
+                            detail: '',
                           ),
                           AppWidget.productItem(
                             context: context,
@@ -132,6 +154,7 @@ class _HomeState extends State<Home> {
                                 price: "600",
                                 description: tempDetail,
                                 id: '3'),
+                            detail: '',
                           )
                         ])),
                     AppWidget.sectionView(
@@ -153,6 +176,7 @@ class _HomeState extends State<Home> {
                                 price: "100",
                                 description: tempDetail,
                                 id: '1'),
+                            detail: '',
                           ),
                           AppWidget.productItem(
                             context: context,
@@ -162,6 +186,7 @@ class _HomeState extends State<Home> {
                                 price: "80",
                                 description: tempDetail,
                                 id: '2'),
+                            detail: '',
                           ),
                           AppWidget.productItem(
                             context: context,
@@ -171,6 +196,7 @@ class _HomeState extends State<Home> {
                                 price: "600",
                                 description: tempDetail,
                                 id: '3'),
+                            detail: '',
                           )
                         ])),
                   ],

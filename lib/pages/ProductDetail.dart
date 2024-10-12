@@ -3,8 +3,10 @@ import 'package:e_commerce_app/models/support_widget.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetail extends StatefulWidget {
-  const ProductDetail({super.key, required this.product});
-  final Product product;
+  String  detail;
+     ProductDetail({ required this.detail ,required this.product});
+
+   final Product product;
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
@@ -86,16 +88,21 @@ class _ProductDetailState extends State<ProductDetail> {
                               ),
                               Text(
                                 "Description",
+                                
                                 style: AppWidget.semiboldTextStyle,
                               ),
                               const SizedBox(
                                 height: 10.0,
                               ),
-                              Text(
-                                widget.product.description,
-                                softWrap: true,
-                                style: TextStyle(color: Colors.black),
+                               Text(
+                              widget.detail,
+                                
+                                style: AppWidget.semiboldTextStyle,
                               ),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                              
                               // const SizedBox(
                               //   height: 70,
                               // ),

@@ -40,14 +40,14 @@ class _SignUpState extends State<SignUp> {
         await SharedPreferenceHelper().saveUserEmail(emailController.text);
         await SharedPreferenceHelper().saveUserId(Id);
         await SharedPreferenceHelper().saveUserName(nameController.text);
-        await SharedPreferenceHelper().saveUserImage("https://firebasestorage.googleapis.com/v0/b/yemen-storee.appspot.com/o/purple.jpg?alt=media&token=d52215c3-38ed-4107-8164-1191938ba0e1");
+        await SharedPreferenceHelper().saveUserImage("https://firebasestorage.googleapis.com/v0/b/yemen-storee.appspot.com/o/boy.jpg?alt=media&token=bd57dee1-2a0f-4d84-9632-521602bf1c00");
 
         Map<String, dynamic> userInfoMap = {
           "Name": nameController.text,
           "Email": emailController.text,
           "Id": Id,
           "Image":
-              "https://firebasestorage.googleapis.com/v0/b/yemen-storee.appspot.com/o/purple.jpg?alt=media&token=d52215c3-38ed-4107-8164-1191938ba0e1"
+              "https://firebasestorage.googleapis.com/v0/b/yemen-storee.appspot.com/o/boy.jpg?alt=media&token=bd57dee1-2a0f-4d84-9632-521602bf1c00"
         };
         await DatabaseMethods().addUserDetails(userInfoMap, Id);
         Navigator.push(

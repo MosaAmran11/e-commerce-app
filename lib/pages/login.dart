@@ -217,6 +217,7 @@ class _SignupState extends State<Signup> {
 import 'package:e_commerce_app/models/support_widget.dart';
 import 'package:e_commerce_app/pages/bottomnav.dart';
 import 'package:e_commerce_app/pages/home.dart';
+import 'package:e_commerce_app/pages/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -350,12 +351,19 @@ class _LogInState extends State<LogIn> {
                   children: [
                     Text("Don't have an account? ",
                         style: AppWidget.lightTextStyle),
-                    Text(
-                      "Sign Up",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
+                    GestureDetector(
+                      onTap:(){
+                         Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignUp()));
+                      } 
+                      ,
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                            color: Colors.green,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ),
                   ],
                 ),

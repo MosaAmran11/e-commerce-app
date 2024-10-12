@@ -97,36 +97,39 @@ class AppWidget {
   }
 
   static Widget productItem(
-      {required BuildContext context, required Product product}) {
+      {required BuildContext context, required Product product , required String detail}) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>ProductDetail(product: product) ));
+                builder: (context) => ProductDetail(product:product , detail: detail,)));
       },
       child: Card(
           color: Colors.white,
           elevation: 5,
           margin: const EdgeInsets.all(5.0),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0,),
             child: Column(
               children: [
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Image.network(
                   product.image,
                   height: 150,
                   width: 150,
                   fit: BoxFit.contain,
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
                   product.title,
                   style: AppWidget.semiboldTextStyle,
                 ),
-                const SizedBox(
-                  height: 10.0,
-                ),
+                Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -159,6 +162,7 @@ class AppWidget {
           )),
     );
   }
+
 
   static Widget appBar(
       {required BuildContext context,
