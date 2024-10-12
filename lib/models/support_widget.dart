@@ -1,5 +1,7 @@
 import 'package:e_commerce_app/models/product.dart';
 import 'package:e_commerce_app/pages/ProductDetail.dart';
+import 'package:e_commerce_app/pages/category_products.dart';
+import 'package:e_commerce_app/pages/home.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget {
@@ -52,7 +54,7 @@ class AppWidget {
     );
   }
 
-    static Widget textFieldAdmin(BuildContext context, String labelText,
+  static Widget textFieldAdmin(BuildContext context, String labelText,
       [TextEditingController? textController]) {
     return Container(
       padding: EdgeInsets.only(left: 20),
@@ -101,9 +103,7 @@ class AppWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProductDetail(
-                      product: product,
-                    )));
+                builder: (context) =>ProductDetail(product: product) ));
       },
       child: Card(
           color: Colors.white,
@@ -113,7 +113,8 @@ class AppWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               children: [
-                Image.asset(
+                SizedBox(height: 10,),
+                Image.network(
                   product.image,
                   height: 150,
                   width: 150,

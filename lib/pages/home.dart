@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/models/product.dart';
+import 'package:e_commerce_app/pages/category_products.dart';
 import 'package:e_commerce_app/pages/profile.dart';
 import 'package:e_commerce_app/models/support_widget.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,12 @@ class _HomeState extends State<Home> {
     "images/TV.png"
   ];
 
+  List Categoryname = [
+    "Headphones",
+    "Laptop",
+    "Watch",
+    "TV",
+  ];
   final String tempDetail =
       "This is good product, it have a 1 year warranty , These headphone are too good like you can also listen a person who is speaking slowly .But be aware of shivam he speaks very loudly"
       "This is good product, it have a 1 year warranty , These headphone are too good like you can also listen a person who is speaking slowly .But be aware of shivam he speaks very loudly"
@@ -85,7 +92,7 @@ class _HomeState extends State<Home> {
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) =>
-                                CategoryTile(image: categories[index])),
+                                CategoryTile(image: categories[index], name: Categoryname[index],)),
                       ),
                     ),
                     AppWidget.sectionView(
@@ -176,14 +183,19 @@ class _HomeState extends State<Home> {
 }
 
 class CategoryTile extends StatelessWidget {
-  final String image;
+  final String image, name;
 
-  const CategoryTile({super.key, required this.image});
+  const CategoryTile({super.key, required this.image, required this.name});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CategoryProduct(category: name)));
+      },
       child: Card(
         margin: const EdgeInsets.all(5.0),
         color: Colors.white,
