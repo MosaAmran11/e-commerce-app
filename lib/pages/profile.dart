@@ -1,9 +1,13 @@
 import 'dart:io';
 
 import 'package:e_commerce_app/models/support_widget.dart';
+import 'package:e_commerce_app/pages/onboarding.dart';
+import 'package:e_commerce_app/pages/signup.dart';
+import 'package:e_commerce_app/services/auth.dart';
 import 'package:e_commerce_app/services/shared_pref.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:random_string/random_string.dart';
 
@@ -100,6 +104,176 @@ class _ProfileState extends State<Profile> {
                             ),
                           ),
                         ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 20, right: 20),
+                    child: Material(
+                      elevation: 3,
+                      child: Container(
+                        padding: EdgeInsets.only(
+                            left: 10, right: 10, top: 10, bottom: 10),
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.person_outline,
+                              size: 35,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Name",
+                                  style: AppWidget.lightTextStyle,
+                                ),
+                                Text(
+                                  name!,
+                                  style: AppWidget.semiboldTextStyle,
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(left: 20, right: 20),
+                    child: Material(
+                      elevation: 3,
+                      child: Container(
+                        padding: EdgeInsets.only(
+                            left: 10, right: 10, top: 10, bottom: 10),
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.mail_outline,
+                              size: 35,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Email",
+                                  style: AppWidget.lightTextStyle,
+                                ),
+                                Text(
+                                  email!,
+                                  style: AppWidget.semiboldTextStyle,
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      await AuthMethods().SignOut().then((value) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignUp()));
+                      });
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(left: 20, right: 20),
+                      child: Material(
+                        elevation: 3,
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: 10, right: 10, top: 10, bottom: 10),
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.logout,
+                                size: 35,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "LogOut",
+                                style: AppWidget.semiboldTextStyle,
+                              ),
+                              Spacer(),
+                              Icon(Icons.arrow_back_ios_outlined),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      await AuthMethods().deleteuser().then((value) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignUp()));
+                      });
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(left: 20, right: 20),
+                      child: Material(
+                        elevation: 3,
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: 10, right: 10, top: 10, bottom: 10),
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.delete_outline,
+                                size: 35,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Delete Account",
+                                style: AppWidget.semiboldTextStyle,
+                              ),
+                              Spacer(),
+                              Icon(Icons.arrow_back_ios_outlined),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

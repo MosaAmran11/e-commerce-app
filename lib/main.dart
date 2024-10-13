@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
             primary: const Color(0xfffd6f3e)),
         useMaterial3: true,
       ),
-      home:  SignUp(),
+      home:  LogIn(),
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       darkTheme: ThemeData.dark(),
