@@ -157,48 +157,6 @@ class _HomeState extends State<Home> {
                             detail: '',
                           )
                         ])),
-                    AppWidget.sectionView(
-                        context,
-                        AppWidget.sectionBar(
-                            context: context,
-                            title: Text(
-                              "Products",
-                              style: AppWidget.semiboldTextStyle,
-                            ),
-                            trailing: AppWidget.textButton(
-                                context, "See All", () {})),
-                        AppWidget.sectionItems([
-                          AppWidget.productItem(
-                            context: context,
-                            product: Product(
-                                title: "Headphone",
-                                image: "images/headphone2.png",
-                                price: "100",
-                                description: tempDetail,
-                                id: '1'),
-                            detail: '',
-                          ),
-                          AppWidget.productItem(
-                            context: context,
-                            product: Product(
-                                title: "Watch",
-                                image: "images/watch2.png",
-                                price: "80",
-                                description: tempDetail,
-                                id: '2'),
-                            detail: '',
-                          ),
-                          AppWidget.productItem(
-                            context: context,
-                            product: Product(
-                                title: "Laptop",
-                                image: "images/laptop2.png",
-                                price: "600",
-                                description: tempDetail,
-                                id: '3'),
-                            detail: '',
-                          )
-                        ])),
                   ],
                 )
               ],

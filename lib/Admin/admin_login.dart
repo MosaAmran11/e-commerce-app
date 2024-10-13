@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce_app/Admin/add_product.dart';
 import 'package:e_commerce_app/Admin/home_admin.dart';
 import 'package:e_commerce_app/models/support_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -105,7 +106,7 @@ class _AdminLoginState extends State<AdminLogin> {
               )));
         } else {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomeAdmin()));
+              context, MaterialPageRoute(builder: (context) => AddProduct()));
         }
       });
     });
